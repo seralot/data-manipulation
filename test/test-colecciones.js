@@ -5,14 +5,14 @@ const cols = require('../src/collection');
 const solution = (...args) => args;
 
 describe('Colecciones', function() {
-  it('Transformar lista en otra (multiplicar todo por 2)', function() {
+  it.only('Transformar lista en otra (multiplicar todo por 2)', function() {
     const input = [
       1, 2, 3,
     ];
     const expected = [
       2, 4, 6,
     ];
-    assert.equal(cols.transform(input), expected);
+    assert.deepEqual(cols.transform(input), expected);
   });
 
   it('Filtrar lista para obtener usuarios activos', function() {
