@@ -8,5 +8,18 @@ module.exports = {
         };
 
         return input;
+    },
+
+    // Filtrar lista para obtener usuarios activos
+    usersActive: function(input) {
+        let users = [];
+
+        input.forEach(element => {
+            if(element.active==true){
+              users.push(element);
+            }
+        });
+
+        return users;
     }
 }
