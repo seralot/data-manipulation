@@ -15,7 +15,7 @@ describe('Colecciones', function() {
     assert.deepEqual(cols.transform(input), expected);
   });
 
-  it('Filtrar lista para obtener usuarios activos', function() {
+  it.only('Filtrar lista para obtener usuarios activos', function() {
     const input = [
       {"id": 25, "name": "User25", "active": true},
       {"id": 32, "name": "User32", "active": false},
@@ -26,7 +26,7 @@ describe('Colecciones', function() {
       {"id": 123, "name": "User123", "active": true},
     ];
     
-    assert.equal(solution(input), expected);
+    assert.deepEqual(cols.usersActive(input), expected);
   });
 
   it('Ordenar lista por atributo (nombre)', function() {
