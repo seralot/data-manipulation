@@ -5,17 +5,17 @@ const cols = require('../src/collection');
 const solution = (...args) => args;
 
 describe('Colecciones', function() {
-  it.only('Transformar lista en otra (multiplicar todo por 2)', function() {
+  it('Transformar lista en otra (multiplicar todo por 2)', function() {
     const input = [
       1, 2, 3,
     ];
     const expected = [
       2, 4, 6,
     ];
-    assert.deepEqual(cols.transform(input), expected);
+    assert.deepStrictEqual(cols.transform(input), expected);
   });
 
-  it.only('Filtrar lista para obtener usuarios activos', function() {
+  it('Filtrar lista para obtener usuarios activos', function() {
     const input = [
       {"id": 25, "name": "User25", "active": true},
       {"id": 32, "name": "User32", "active": false},
@@ -26,7 +26,7 @@ describe('Colecciones', function() {
       {"id": 123, "name": "User123", "active": true},
     ];
     
-    assert.deepEqual(cols.usersActive(input), expected);
+    assert.deepStrictEqual(cols.usersActive(input), expected);
   });
 
   it('Ordenar lista por atributo (nombre)', function() {
@@ -41,7 +41,7 @@ describe('Colecciones', function() {
       {"id": 123, "name": "User123", "active": true},
     ];
     
-    assert.equal(solution(input), expected);
+    assert.deepStrictEqual(cols.usersSort(input), expected);
   });
 
   it('Fusionar listas', function() {
@@ -49,14 +49,14 @@ describe('Colecciones', function() {
     const input2 = [3, 4];
     const expected = [1, 2, 3, 4];
 
-    assert.equal(solution(input1, input2), expected);
+    assert.deepStrictEqual(cols.fusion(input1, input2), expected);
   });
 
   it('Obtener el valor con la puntuación más alta', function() {
     const input = [20, 60, 10, 10];
-    const expected = {"score": 60};
+    const expected = 60;
 
-    assert.equal(solution(input), expected);
+    assert.deepStrictEqual(cols.valor(input), expected);
   });
 
   it('Obtener el objeto con la puntuación más alta', function() {
@@ -68,7 +68,7 @@ describe('Colecciones', function() {
     ];
     const expected = {"score": 60};
 
-    assert.equal(solution(input), expected);
+    assert.deepStrictEqual(cols.object(input), expected);
   });
 
   it('Sumar valores de una lista de objectos', function() {
@@ -80,7 +80,7 @@ describe('Colecciones', function() {
     ];
     const expected = 100;
 
-    assert.equal(solution(input), expected);
+    assert.equal(cols.sum(input), expected);
   });
 
   it('Comprobar si un objeto está en una lista', function() {
@@ -88,7 +88,7 @@ describe('Colecciones', function() {
       {"id": 1, "name": "User1"},
       {"id": 5, "name": "User5"},
     ];
-    assert.equal(solution(blacklist, {"id": 1, "name": "User1"}), true);
-    assert.equal(solution(blacklist, {"id": 5, "name": "User100"}), false);
+    assert.equal(cols.exists(blacklist, {"id": 1, "name": "User1"}), true);
+    assert.equal(cols.exists(blacklist, {"id": 5, "name": "User100"}), false);
   })
 });
